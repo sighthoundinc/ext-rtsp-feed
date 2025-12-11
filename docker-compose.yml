@@ -1,17 +1,15 @@
-version: "3.3"
 networks:
   rtsp-server:
 
 services:
   rtsp_server:
-    image: aler9/rtsp-simple-server
+    image: bluenviron/mediamtx
     networks:
       - rtsp-server
     ports:
       - ${RTSP_PORT}:8554
-      - 1935:1935 
-    environment:
-      - RTSP_PROTOCOLS=tcp
+      - 1935:1935
+
   stream:
     image: baicontainers/rtsp-feed
     networks:
@@ -19,7 +17,7 @@ services:
     volumes:
       - ${VOLUME_MOUNT}
     depends_on:
-      - rtsp_server 
+      - rtsp_server
     environment:
       - STREAM_ENDPOINT=${STREAM_ENDPOINT}
       - FILE_PATH=${FILE_PATH}
