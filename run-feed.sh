@@ -22,4 +22,4 @@ FILE_PATH=${file_path}
 VOLUME_MOUNT=${volmount}
 STREAM_ENDPOINT=${stream_endpoint}
 EOF
-docker-compose up -d
+docker compose up -d
